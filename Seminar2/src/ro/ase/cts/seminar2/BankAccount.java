@@ -2,7 +2,7 @@ package ro.ase.cts.seminar2;
 
 import ro.ase.cts.seminar2.interfaces.Profitable;
 
-public abstract class BankAccount extends Account implements Profitable{
+public abstract class BankAccount extends Account{
 	protected double balance;
 	protected String iban;
 	
@@ -25,12 +25,7 @@ public abstract class BankAccount extends Account implements Profitable{
 		this.balance = balance;
 	}
 
-	@Override
-	public void addInterest(double interest) {
-		this.balance*=(1+interest/100);
-	}
-	
-	
+
 	
 
 }
