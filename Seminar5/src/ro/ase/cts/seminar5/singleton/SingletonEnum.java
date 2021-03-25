@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5;
+package ro.ase.cts.seminar5.singleton;
 
 import java.util.ArrayList;
 
