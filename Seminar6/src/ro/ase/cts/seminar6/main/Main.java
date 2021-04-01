@@ -26,8 +26,16 @@ public class Main {
 		}
 		Product myProduct = null;
 		
+		System.out.println(productFactory.getCatalog());
+		userPreference = scan.nextLine();
+		try {
+			int selectedId = Integer.valueOf(userPreference);
+			myProduct = productFactory.makeProduct(selectedId);
+		} 
+		catch(NumberFormatException e) {
+			System.err.println("Selectie invalida");
+		}
 		
-		myProduct = productFactory.makeProduct();
 	
 //		}
 //		else {

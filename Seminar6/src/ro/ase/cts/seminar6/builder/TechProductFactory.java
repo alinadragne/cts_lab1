@@ -11,8 +11,21 @@ import java.util.ArrayList;
 public class TechProductFactory extends AbstractProductFactory{
 
 	@Override
-	public Product makeProduct() throws UnsupportedOperationException {
-		return new TechProduct("generic");
+	public Product makeProduct(int id) throws UnsupportedOperationException {
+		ArrayList<String> records= readRecordsFromFile("tech_products.csv");
+		for(String record : records) {
+			String[] productAttributes = record.split(",");
+			if(Integer.valueOf(productAttributes[0]) == id) {
+				TechProduct.TechProductBuilder productBuilder =new TechProduct.TechProductBuilder(id);
+				return productBuilder.setName(productAttributes[1])
+				.setManufacturer(productAttributes[2])
+				.setModel(productAttributes[3])
+				.setPrice(Float.valueOf(productAttributes[5]))
+				.getProduct();
+			} 
+		}
+		return new TechProduct.TechProductBuilder(id).getProduct();
+		
 	}
 
 	@Override
