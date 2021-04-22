@@ -27,9 +27,10 @@ public class YoutubeLibrary implements YoutubeLibraryInterface {
 	}
 
 	@Override
-	public String getVideoInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getVideoInfo(int id) {
+		System.out.println("Fetching data info...");
+		return database.getVideoInfo(id);
+
 	}
 
 }
