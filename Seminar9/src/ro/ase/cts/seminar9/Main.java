@@ -4,7 +4,9 @@ import ro.acs.cts.seminar9.proxy.YoutubeLibrary;
 import ro.acs.cts.seminar9.proxy.YoutubeLibraryInterface;
 import ro.acs.cts.seminar9.proxy.YoutubeLibraryProxy;
 import ro.ase.cts.seminar9.flyweight.Model3DFactory;
+import ro.ase.cts.seminar9.flyweight.ModelType;
 import ro.ase.cts.seminar9.flyweight.ScreenData;
+import ro.ase.cts.seminar9.flyweight.ModelFlyweigthInterface;
 
 public class Main {
 
@@ -29,6 +31,6 @@ public class Main {
 				
 				ModelFlyweigthInterface solider1 = Model3DFactory.getModel(ModelType.SOLIDER);
 				solider1.display(dataSet1);
-				solider.display(dataSet2);
+				solider1.display(dataSet2);
 	}
 }
