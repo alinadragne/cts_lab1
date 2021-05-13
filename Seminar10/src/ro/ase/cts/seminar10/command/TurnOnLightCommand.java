@@ -1,11 +1,11 @@
 package ro.ase.cts.seminar10.command;
 
-public class TurnLightOnCommand implements CommandInterface{
+public class TurnOnLightCommand implements CommandInterface{
 
 	private LighBulb bulb;
 	
 	
-	public TurnLightOnCommand(LighBulb bulb) {
+	public TurnOnLightCommand() {
 		super();
 		this.bulb = bulb;
 	}

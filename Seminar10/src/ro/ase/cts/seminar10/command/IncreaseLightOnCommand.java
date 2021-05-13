@@ -1,11 +1,10 @@
 package ro.ase.cts.seminar10.command;
 
-public class TurnLightOnCommand implements CommandInterface{
-
+public class IncreaseLightOnCommand implements CommandInterface{
 	private LighBulb bulb;
 	
 	
-	public TurnLightOnCommand(LighBulb bulb) {
+	public IncreaseLightOnCommand(LighBulb bulb) {
 		super();
 		this.bulb = bulb;
 	}
@@ -13,8 +12,7 @@ public class TurnLightOnCommand implements CommandInterface{
 
 	@Override
 	public void execute() {
-		bulb.turnOnLight();
+		bulb.increaseLightIntensity();
 		
 	}
-
 }
