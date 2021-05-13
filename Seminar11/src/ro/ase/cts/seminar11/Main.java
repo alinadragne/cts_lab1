@@ -1,4 +1,4 @@
-package ro.ase.cts.ase.seminar11;
+package ro.ase.cts.seminar11;
 
 import ro.ase.cts.seminar11.state.Gate;
 
