@@ -39,6 +39,4 @@ public abstract class BankAccount extends Account{
 		this.observers.remove(observer);
 	}
 
-	
-
 }

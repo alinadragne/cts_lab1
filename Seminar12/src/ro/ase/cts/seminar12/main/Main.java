@@ -2,6 +2,8 @@ package ro.ase.cts.seminar12.main;
 
 import java.util.ArrayList;
 
+import ro.acs.cts.seminar12.template.DecimalFormatter;
+import ro.acs.cts.seminar12.template.HexFormatter;
 import ro.ase.cts.seminar12.memento.CharacterMemento;
 import ro.ase.cts.seminar12.memento.GameCharacter;
 import ro.ase.cts.seminar12.observer.BankAccount;
@@ -22,6 +24,8 @@ public class Main {
 				
 			}
 		});
+	
+		
 		
 		NotificationInterface smsNotificationInterface = new SMSNotification();
 		account.addObserver(smsNotificationInterface);
@@ -41,5 +45,11 @@ public class Main {
 		System.out.println("Character hitpoint: " + myCharacter.getHitpoints());
 		myCharacter.setMemento(saveList.get(0));
 		System.out.println("Character hitpoint: " + myCharacter.getHitpoints());
+		
+		System.out.println("---------------------------------------------------------");
+		DecimalFormatter decimalFormatter = new DecimalFormatter();
+		decimalFormatter.displayOutput(10);
+		HexFormatter hexFormatter = new HexFormatter();
+		hexFormatter.displayOutput(10);
 	}
 }
