@@ -2,6 +2,7 @@ package ro.ase.cts.unittesting;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import ro.ase.cts.seminar13.Student;
 import ro.ase.cts.seminar13.exceptions.StudentExceptionWrongValue;
-
+import org.junit.jupiter.api.function.Executable;
 
 class StudentTestCase {
 	
@@ -31,7 +32,7 @@ class StudentTestCase {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		student = new Student(defaultNume,defaultVarsta,defaultNote);
+		student = student=new Student(defaultNume,defaultVarsta,defaultNote);
 	}
 
 	@AfterEach
@@ -44,7 +45,7 @@ class StudentTestCase {
 	void testStudentConstructorRight() {
 		String studentName = "Alina";
 		int studentAge = 27;
-		int grades[] = {8, 8 ,9};
+		int grades[] = {9, 9 ,9};
 		
 		Student student = new Student(studentName, studentAge, grades);
 		assertEquals(studentName, student.nume, "Name is not equal");
@@ -66,13 +67,57 @@ class StudentTestCase {
 		assertNotNull(student);
 	}
 	
-	@Test(expected = StudentExceptionWrongValue.class)
-	void testStudentSetVarstaErrorCondition() {
+
+	
+	@Test
+	void testStudentSetVarstaErrorCodition() {
+		assertThrows(StudentExceptionWrongValue.class, ()->{
+			student.setVarsta(-1);
+		});
 		
-		student.setVarsta(-1);	
-			
 	}
 	
+	@Test
+	void testStudentGetVarstaRight() {
+		int expectedValue=defaultVarsta;
+		int actualValue=student.getVarsta();
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	void testComputeAverageErrorCondition() {
+		try {
+			student.setNote(null);
+		} catch (StudentExceptionWrongValue e) {
+			e.printStackTrace();
+		}
+		assertThrows(StudentExceptionWrongValue.class, new Executable() {
+
+			@Override 
+			public void execute() throws Throwable {
+				student.computeAverage();
+			}
+		});
+	}
+	
+	@Test
+	void testCalculMedieRightTwoDecimals() throws StudentExceptionWrongValue {
+		float expectedValue = 9.00f;
+		float actualValue = student.computeAverage();
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	void testSetNoteBoundaryCondition() {
+		int invalidNote[] = new int[3];
+		for(int i = 0; i < 2; i++) {
+			invalidNote[i] =  5 + i;
+		}
+		invalidNote[2] = 20;
+		assertThrows(StudentExceptionWrongValue.class, () -> {
+			student.setNote(invalidNote);
+		});
+	}
 	
 	
 }

@@ -8,6 +8,9 @@ public class Student {
 	 * varsta - [18 -30]
 	 * note - [1-10]
 	 */
+	private static int NOTA_MAX = 10;
+	private static int NOTA_MIN = 1;
+	
 
 	public String nume;
 	public int varsta;
@@ -43,8 +46,25 @@ public class Student {
 		return note;
 	}
 
-	public void setNote(int[] note) {
-		this.note = note;
+	public void setNote(int[] note) throws StudentExceptionWrongValue {
+		for(int i = 0; i<note.length; i++) {
+			if(note[i] > NOTA_MAX || note[i]< NOTA_MIN) {
+				throw new StudentExceptionWrongValue("Value not ok");
+			}
+			this.note = note;
+		}
+		
 	}
 	
+	public float computeAverage() throws StudentExceptionWrongValue {
+		if(note == null) {
+			throw new StudentExceptionWrongValue("Only not null values accepted");
+		}
+		float avg = 0;
+		for(int i = 0; i < note.length; i++) {
+			avg += note[i];
+		}
+		avg = avg / note.length ;
+		return avg * 100 / 100.0f;
+	}
 }
